@@ -1,6 +1,8 @@
 ﻿#include <iostream> //include ("import") the declarations for the I/O (input/output) stream library
 #include <complex>
 #include <vector>
+
+#include "06-10-2026.h"
 using namespace std; //make names from std visible without std::
 
 double square(double x)
@@ -62,6 +64,27 @@ int main()
     
     print(bitwise, bitwise2);
     print(bitwise3, bitwise4);
+    
+    CppTour10062026* cpp_tour10062026 = new CppTour10062026(); // if class const we not allow to change anything inside the class
+    
+    //cpp_tour10062026->dmv = 10; // Error when trying to change a const value
+    //cpp_tour10062026->var = 20; // this is allowed to change as it's a regular int
+    
+    //constexpr double max1 = 1.4 * square(cpp_tour10062026->dmv); // Ok if square(17) is a constant expression
+    //constexpr double max2 = 1.4 * square(cpp_tour10062026->var); // error: var is not a constant expression
+    const double max3 = 1.4 * square(cpp_tour10062026->var); // Ok, may be evaluated at run time
+    
+    vector<double> v {1.2, 3.4, 4.5}; // v is not a const
+    const double s1 = cpp_tour10062026->sum(v); // OK: evaluated at run time
+    //constexpr double s2 = cpp_tour10062026->sum(v); // error: sum(v) not const expression
+    
+    char a[6]; // array of 6 characters;
+    char* ptr; // pointer to character;
+    
+    ptr = &a[3]; // ptr points to a's fourth element;
+    char x = *ptr; // *ptr1 is the object (value) that ptr points to (e.g a's fourth element);
+    
+    
 }
 
 void some_function() // function that doesn't return a value

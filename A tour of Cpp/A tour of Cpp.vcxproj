@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="06-10-2026.cpp" />
     <ClCompile Include="A_tour_of_Cpp.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -233,6 +234,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="A_tour_of_Cpp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="06-10-2026.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
