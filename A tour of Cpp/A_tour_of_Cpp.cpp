@@ -32,8 +32,68 @@ void user()
     //print(23.2,1);
 }
 
+void copy_fct()
+{
+    int v1[10] {0,1,2,3,4,5,6,7,8,9};
+    int v2[10]; //to become a copy of v1
+    
+    for (auto i = 0; i != 10; ++i)
+    {
+        v2[i] = v1[i];
+    }
+}
+
+void print()
+{
+    int v[] {0,1,2,3,4,5,6,7,8,9};
+    
+    for (auto x: v) // same as below.
+            cout << x << '\n';
+    cout << "------" << '\n';
+    for (auto x: {0,1,2,3,4,5,6,7,8,9}) // using x value as copy and print it. copy can be read and modified without effecting the original value.
+            cout << x << '\n';
+    cout << "------" << '\n';
+    for (auto& x : v) // using value by reference, that means passing the actual value, it can be read/modified that modify reflects to the original value.
+        cout << x << '\n';
+    cout << "------" << '\n';
+    
+    //Notes
+    /*
+     * Reference are similar to a pointer
+     * except you don't need to use * to access the value referred
+     * Also a reference cannot be made to refer to a different object after its initialization
+     */
+}   
+
+void sort(vector<double>& v) // Reference are particular useful for specifying function arguments like in this example
+{
+    //By using a reference, we ensure that for a call sort(my_vec) we do not copy my_vec and that it really is my_vec
+    // that is sorted and not a copy of it
+    
+    for (auto i = 0; i != v.size() - 1; ++i)
+    {
+        const double _temp = v[i]; // 5
+        v[i] = v[i + 1]; // 2
+        v[i + 1] = _temp; // 5
+        
+        //out put [2, 5]
+    }
+}
+
+double sum(const vector<double>& v) // When we don't want to modify an argument, but still don't want the cost of copying, we use const reference like this example
+{
+    double r {0};
+    
+    for (const double x : v)
+        r += x;
+    
+    return r;
+}
+
 int main()
 {
+    
+    print();
     Player p;
     p.Health = 100;
     p.Mana = 200;
@@ -82,8 +142,7 @@ int main()
     char* ptr; // pointer to character;
     
     ptr = &a[3]; // ptr points to a's fourth element;
-    char x = *ptr; // *ptr1 is the object (value) that ptr points to (e.g a's fourth element);
-    
+    char x = *ptr; // *ptr1 is the object (value) that ptr points to (e.g a's fourth element)
     
 }
 
