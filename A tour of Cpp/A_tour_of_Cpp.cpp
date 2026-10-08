@@ -90,6 +90,18 @@ double sum(const vector<double>& v) // When we don't want to modify an argument,
     return r;
 }
 
+bool accept()
+{
+    cout << "Do you want to proceed (y or n)?\n"; // write question << operand means ("put to")
+    
+    char answer {0};
+    cin >> answer; // read answer, >> operand means ("get from")
+    
+    if (answer == 'y')
+        return true;
+    return false;
+}
+
 int main()
 {
     
@@ -144,6 +156,48 @@ int main()
     ptr = &a[3]; // ptr points to a's fourth element;
     char x = *ptr; // *ptr1 is the object (value) that ptr points to (e.g a's fourth element)
     
+    double* pd = nullptr;
+    //Link<Record>* lst {nullptr}; // pointer to a Link to a Record
+    //int x {nullptr}; // error: nullptr is a pointer not an integer
+    
+    const bool bAccepted = accept();
+    if (bAccepted)
+    {
+        cout << "accepted";
+    }
+    else
+    {
+        cout << "not accepted";
+    }
+}
+
+int count_x(char* p, char x)
+    // count the number of occurrences of x in p[]
+    // p is assumed to point to a zero-terminated array of char (or to nothing)
+{
+    /*
+     * Note how we can move a pointer to point to the next element of an array using ++
+     * And that we can leave out the initializer in a for-statement if we don't need it.
+     */
+   
+    /*
+    if (p == nullptr) return 0;
+    int count {0};
+    for (; p != nullptr; ++p)
+    {
+        if (*p == x)
+                count++;
+    }
+    */
+    
+    int count {0};
+    while (p)
+    {
+        if (*p == x)
+                ++count;
+        ++p;
+    }
+    return count;
 }
 
 void some_function() // function that doesn't return a value
