@@ -3,7 +3,6 @@
 #include <vector>
 
 #include "06-10-2026.h"
-#include "09-10-2026.h"
 using namespace std; //make names from std visible without std::
 
 double square(double x)
