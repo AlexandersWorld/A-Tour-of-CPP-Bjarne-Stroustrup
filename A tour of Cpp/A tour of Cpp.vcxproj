@@ -160,6 +160,7 @@
     <ClCompile Include="12-10-2026.cpp" />
     <ClCompile Include="13102026.cpp" />
     <ClCompile Include="14-10-2026.cpp" />
+    <ClCompile Include="15-10-2026.cpp" />
     <ClCompile Include="A_tour_of_Cpp.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -247,6 +248,7 @@
     <ClInclude Include="12-10-2026.h" />
     <ClInclude Include="13102026.h" />
     <ClInclude Include="14-10-2026.h" />
+    <ClInclude Include="15-10-2026.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
