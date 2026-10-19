@@ -1,5 +1,7 @@
 ﻿#pragma once
+#include <iostream>
 
+using namespace std;
 enum Type { str, num };
 
 union Value
