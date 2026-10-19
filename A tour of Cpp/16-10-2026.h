@@ -13,11 +13,11 @@ class Vector_container : public Container // Vector_container implements contain
 {
     Vector v;
 public:
-    Vector_container(int s) : v(s) {} // Vector of s elements
+    //Vector_container(int s) : v(s) {} // Vector of s elements
     ~Vector_container() {}
     
-    double& operator[](int i) {return v[i]; }
-    int size() const { return v.size(); }
+    //double& operator[](int i) {return v[i]; }
+    //int size() const { return v.size(); }
 };
 
 class CppTour10162026 : public Container

@@ -1,8 +1,10 @@
 ﻿#include <iostream> //include ("import") the declarations for the I/O (input/output) stream library
 #include <complex>
+#include <thread>
 #include <vector>
 
 #include "06-10-2026.h"
+#include "19-10-2026.h"
 using namespace std; //make names from std visible without std::
 
 double square(double x)
@@ -193,6 +195,15 @@ int main()
     //int i = Color:red; // error: Color::red is not an int
     //Color c = 2; // error:  2 is not a Color
     Traffic_light next = ++light; // next becomes Traffic_light::green
+    
+    /*
+    CppTour10192026 cpp;
+    
+    thread t(&CppTour10192026::increment);
+    thread t2(&CppTour10192026::increment);
+    t.join();
+    t2.join();
+    */
 }
 
 int count_x(char* p, char x)

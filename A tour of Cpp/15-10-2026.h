@@ -18,13 +18,13 @@ public:
     
     complex& operator*=(complex); // defined out-of-class somewhere
     complex& operator/=(complex); // defined out-of-class somewhere
-    
+   
+    /*
     complex operator+(complex a, complex b) { return a+=b; }
     complex operator-(complex a, complex b) { return a-=b; }
     complex operator-(complex a) { return {-a.real(), -a.imag()}; } // unary minus
     complex operator*(complex a, complex b) { return a*=b; }
     complex operator/(complex a, complex b) { return a/=b; }
-    
     bool operator==(complex a, complex b) // equal
     {
         return a.real()==b.real() && a.imag()==b.imag();
@@ -34,6 +34,8 @@ public:
         return !(a==b);
     }
     complex sqrt(complex); //definition is elsewhere
+    */
+    
 };
 
 class CppTour10152026
