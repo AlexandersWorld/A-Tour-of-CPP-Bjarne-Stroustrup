@@ -1,5 +1,5 @@
 ﻿#pragma once
 
 class
-21_10_2026
+CppTour10212026
  {public:};
