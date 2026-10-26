@@ -63,7 +63,7 @@ private:
 class CppTour10202026
 {
 public:
-    Shape* read_shape(std::istream& is)
+    static Shape* read_shape(std::istream& is)
     {
         switch (k)
         {
