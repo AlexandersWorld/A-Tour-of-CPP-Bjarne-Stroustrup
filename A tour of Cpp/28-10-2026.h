@@ -16,5 +16,5 @@ public:
     void use();
     bool is_identifier(const string& s);
     bool is_identify(const string& s);
-
+    void test();
 };
