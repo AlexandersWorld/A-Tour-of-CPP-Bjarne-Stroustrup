@@ -57,3 +57,13 @@ bool CppTour10282026::is_identify(const string& s)
     regex pat {R"([_[:alpha:]]\w*)"};
     return regex_match(s, pat);
 }
+
+void CppTour10282026::test()
+{
+    string input = "aa as; asd ++e^asdf asdfg";
+    regex pat {R"(\s+(\w+))"};
+    for (sregex_iterator p(input.begin(), input.end(), pat); p!=sregex_iterator{};++p)
+    {
+        cout << (*p)[1] << '\n';
+    }
+}
