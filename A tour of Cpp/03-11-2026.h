@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <algorithm>
 #include <vector>
 #include <iostream>
 #include <list>
@@ -12,6 +13,11 @@ struct Entry
 {
     string name;
     int number;
+    
+    bool operator<(const Entry& x, const Entry& y) // less than
+    {
+        return x.name < y.name; // order Entries by their names
+    }
 };
 
 template<typename T>
@@ -25,7 +31,6 @@ class Vec : public vector<T>
     const T& operator[](int i) const
         {return vector<T>::at(i); } // range check const objects
 };
-
 
 void checked(Vec<Entry>& book)
 {
@@ -105,6 +110,39 @@ struct Rhash // a hash function for Record
         return hash<string>()(r.name)^hash<int>()(r.product_code);
     }
 };
+
+void f2(vector<Entry>& vec, list<Entry>& lst)
+{
+    sort(vec.begin(), vec.end()); // use < for order
+    unique_copy(vec.begin(), vec.end(), lst.begin()); // don't copy adjacent equal elements
+}
+
+list<Entry> f3(vector<Entry>& vec)
+{
+    list<Entry> res;
+    sort(vec.begin(), vec.end());
+    unique_copy(vec.begin(), vec.end(), back_inserter(res));
+    return res;
+}
+
+bool has_c(const string& s, char c) // does s contain the character c ?
+{
+    auto p = find(s.begin(), s.end(), c);
+    if (p!=s.end())
+        return true;
+    else
+        return false;
+}
+
+bool has_c2(const string& s, char c)
+{
+    return find(s.begin(), s.end(), c)!=s.end(); 
+}
+
+vector<string::iterator> find_all(string& s, char c) // find all occurrences of c in s
+{
+    
+}
 
 unordered_set<Record, Rhash> my_set; // set of Recoreds using Rhash for lookup
 
