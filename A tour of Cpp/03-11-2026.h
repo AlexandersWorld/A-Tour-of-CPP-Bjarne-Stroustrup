@@ -1,9 +1,11 @@
 ﻿#pragma once
 #include <algorithm>
+#include <fstream>
 #include <vector>
 #include <iostream>
 #include <list>
 #include <map>
+#include <set>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -139,9 +141,80 @@ bool has_c2(const string& s, char c)
     return find(s.begin(), s.end(), c)!=s.end(); 
 }
 
-vector<string::iterator> find_all(string& s, char c) // find all occurrences of c in s
+template<typename T>
+using Iterator = typename T::iterator;
+
+template<typename C, typename V>
+vector<Iterator<C>> find_all(C& c, V v) // find all occurrences of v in c
 {
+    vector<Iterator<C>> res;
+    for (auto p = c.begin(); p!=c.end(); ++p)
+        if (*p==v)
+            res.push_back(p);
+    return res;
+}
+
+void test()
+{
+    string m {"Mary had a little lamb"};
     
+    for (auto p : find_all(m ,'a'))
+        if (*p!='a')
+            cerr << "string bug!\n";
+    
+    list<double> Id {1.1, 2.2, 3.3, 1.1};
+    for (auto p : find_all(Id, 1.1))
+        if (*p!=1.1)
+            cerr << "list bug!\n";
+    
+    vector<string> vs {"red", "blue", "green", "green", "orange", "green"};
+    for (auto p : find_all(vs, "red"))
+        if (*p!="red")
+            cerr << "vector bug!\n";
+    
+    for (auto p : find_all(vs,"green"))
+        *p = "vert";
+}
+
+ostream_iterator<string> oo {cout};
+istream_iterator<string> ii {cin};
+
+int main()
+{
+    *oo = "Hello, "; // meaning cout <<"Hello, "
+    ++oo;
+    *oo = "world!\n"; // meaning cout <<"world!\n" 
+    
+    string from, to;
+    cin >> from >> to; // get resource and target file names
+    
+    ifstream is {from}; // input stream for file "from"
+    istream_iterator<string> ii {is}; // input iterator for stream
+    istream_iterator<string> eos {}; // input sentinel
+    
+    ofstream os {to}; // output stream file "to"
+    ostream_iterator<string> oo {os, "\n"};
+    
+    vector<string> b {ii, eos}; // b is a vector initialized from input
+    sort(b.begin(), b.end()); // sort the buffer
+    
+    unique_copy(b.begin(), b.end(), oo); // copy buffer to output, discard replicated values
+    
+    return !is.eof() || !os; // return error state
+}
+
+int main2()
+{
+    string from, to;
+    cin >> from >> to; // get resource and target file
+    
+    ifstream is {from}; // input stream for file "from"
+    ofstream os {to};
+    
+    set<string> b {istream_iterator<string>{is}, istream_iterator<string>{}}; // read input
+    copy(b.begin(), b.end(), ostream_iterator<string>{os, "\n"});
+    
+    return is.eof() || !os;
 }
 
 unordered_set<Record, Rhash> my_set; // set of Recoreds using Rhash for lookup
