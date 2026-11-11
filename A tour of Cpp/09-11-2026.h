@@ -118,7 +118,7 @@ void binary2(int i)
     cout << b << '\n';
 }
 
-class CppTour11092026
+class CppTour11112026
 {
 public:
 };
