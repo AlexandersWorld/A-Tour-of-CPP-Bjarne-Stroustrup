@@ -163,6 +163,7 @@
     <ClCompile Include="09-11-2026.cpp" />
     <ClCompile Include="11-11-2026.cpp" />
     <ClCompile Include="12-10-2026.cpp" />
+    <ClCompile Include="12-11-2026.cpp" />
     <ClCompile Include="13102026.cpp" />
     <ClCompile Include="14-10-2026.cpp" />
     <ClCompile Include="15-10-2026.cpp" />
@@ -266,6 +267,7 @@
     <ClInclude Include="09-11-2026.h" />
     <ClInclude Include="11-11-2026.h" />
     <ClInclude Include="12-10-2026.h" />
+    <ClInclude Include="12-11-2026.h" />
     <ClInclude Include="13102026.h" />
     <ClInclude Include="14-10-2026.h" />
     <ClInclude Include="15-10-2026.h" />
