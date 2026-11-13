@@ -98,6 +98,53 @@ void t1()
     cout << v[0] << '\n';
 }
 
+template<typename C>
+using Value_type = typename C::value_type; // C's value type
+template<typename C>
+using Iterator_type = typename C::iterator; // C's iterator
+template<typename Iter>
+using Iterator_category = typename std::iterator_traits<Iter>::iterator_category; // Iter's category
+
+template<typename Ran> // for random-access iterators
+void sort_helper(Ran beg, Ran end, random_access_iterator_tag) // we can subscript into [beg:end]
+{
+    sort(beg, end);
+}
+
+template<typename For> // for forward iterators
+void sort_helper(For beg, For end, forward_iterator_tag) // we can traverse [beg:end)
+{
+    vector<Value_type<For>> v {beg, end}; // initialize a vector from [beg:end)
+    sort(v.begin(), v.end());
+    copy(v.begin(), v.end(), beg); // copy the elements back
+}
+
+template<typename C>
+void sort(C& c)
+{
+    using Iter = Iterator_type<C>;
+    sort_helper(c.begin, c.end(), Iterator_type<Iter>{});
+}
+
+bool b1 = is_arithmetic<int>(); // yes, int is an arithmetic type
+bool b2 = is_arithmetic<string>(); // no, std::string is not an arithmetic type
+bool b3 = is_class<Round>(); // yes, it's a structure therefore a class
+
+template<typename Scalar>
+class complex
+{
+    Scalar re, im;
+    
+public:
+    static_assert(is_arithmetic<Scalar>(), "Sorry, I only support complex of arithmetic types");
+};
+
+template<typename T>
+constexpr bool Is_arithmetic()
+{
+    return std::is_arithmetic<T>::value;
+}
+
 class CppTour11122026
 {
 public:
